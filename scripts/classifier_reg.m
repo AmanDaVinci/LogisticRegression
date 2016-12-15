@@ -45,22 +45,13 @@ fprintf('Cost at initial theta (zeros): %f\n', cost);
 fprintf('\nProgram paused. Press enter to continue.\n');
 pause;
 
-%% ============= Part 2: Regularization and Accuracies =============
-%  Optional Exercise:
-%  In this part, you will get to try different values of lambda and 
-%  see how regularization affects the decision coundart
-%
-%  Try the following values of lambda (0, 1, 10, 100).
-%
-%  How does the decision boundary change when you vary lambda? How does
-%  the training set accuracy vary?
-%
+%% ============= Experimental Regularization and Accuracies =============
 
 % Initialize fitting parameters
 initial_theta = zeros(size(X, 2), 1);
 
-% Experimenting with regularization parameter
-lambdas = [0 0.5 1 1.5 2 5 10 100];
+% Experimenting with regularization parameter with steps of 3
+lambdas = [0 0.0001 0.0003 0.0010 0.0030 0.01 0.03 0.1 0.3 1 3 10 30 60 100 130 160 170 173 176 180 300 1000];
 
 for i = 1:length(lambdas),
 	% Set Options
