@@ -10,6 +10,6 @@ A regularized Classifier written in MATLAB/Octave
 - ~~sigmoid.m - Sigmoid Function~~  
 - ~~costFunction.m - Logistic Regression Cost Function~~  
 - ~~predict.m - Logistic Regression Prediction Function~~  
-- costFunctionReg.m - Regularized Logistic Regression Cost
+- ~~costFunctionReg.m - Regularized Logistic Regression Cost~~
 - plotDecisionBoundary - Include decision boundary polynomial support
 - logReg - Update Graph output
