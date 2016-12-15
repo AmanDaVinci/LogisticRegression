@@ -1,22 +1,3 @@
-%% Machine Learning Online Class - Exercise 2: Logistic Regression
-%
-%  Instructions
-%  ------------
-% 
-%  This file contains code that helps you get started on the second part
-%  of the exercise which covers regularization with logistic regression.
-%
-%  You will need to complete the following functions in this exericse:
-%
-%     sigmoid.m
-%     costFunction.m
-%     predict.m
-%     costFunctionReg.m
-%
-%  For this exercise, you will not need to change any code in this file,
-%  or any other files other than those mentioned above.
-%
-
 %% Initialization
 clear ; close all; clc
 
@@ -24,7 +5,7 @@ clear ; close all; clc
 %  The first two columns contains the X values and the third column
 %  contains the label (y).
 
-data = load('ex2data2.txt');
+data = load('../data/ex2data2.txt');
 X = data(:, [1, 2]); y = data(:, 3);
 
 plotData(X, y);
@@ -41,15 +22,7 @@ legend('y = 1', 'y = 0')
 hold off;
 
 
-%% =========== Part 1: Regularized Logistic Regression ============
-%  In this part, you are given a dataset with data points that are not
-%  linearly separable. However, you would still like to use logistic 
-%  regression to classify the data points. 
-%
-%  To do so, you introduce more features to use -- in particular, you add
-%  polynomial features to our data matrix (similar to polynomial
-%  regression).
-%
+%% =========== Regularized Logistic Regression ============
 
 % Add Polynomial Features
 
@@ -86,31 +59,32 @@ pause;
 % Initialize fitting parameters
 initial_theta = zeros(size(X, 2), 1);
 
-% Set regularization parameter lambda to 1 (you should vary this)
-lambda = 1;
+% Experimenting with regularization parameter
+lambdas = [0 0.5 1 1.5 2 5 10 100];
 
-% Set Options
-options = optimset('GradObj', 'on', 'MaxIter', 400);
+for i = 1:length(lambdas),
+	% Set Options
+	options = optimset('GradObj', 'on', 'MaxIter', 400);
 
-% Optimize
-[theta, J, exit_flag] = ...
-	fminunc(@(t)(costFunctionReg(t, X, y, lambda)), initial_theta, options);
+	% Optimizing with lambda1
+	[theta, J, exit_flag] = ...
+				fminunc(@(t)(costFunctionReg(t, X, y, lambdas(i))), initial_theta, options);
 
-% Plot Boundary
-plotDecisionBoundary(theta, X, y);
-hold on;
-title(sprintf('lambda = %g', lambda))
+	% Plot Boundary
+	plotDecisionBoundary(theta, X, y);
+	hold on;
+	title(sprintf('lambda = %g', lambdas(i) ))
 
-% Labels and Legend
-xlabel('Microchip Test 1')
-ylabel('Microchip Test 2')
+	% Labels and Legend
+	xlabel('Microchip Test 1')
+	ylabel('Microchip Test 2')
 
-legend('y = 1', 'y = 0', 'Decision boundary')
-hold off;
+	legend('y = 1', 'y = 0', 'Decision boundary')
+	hold off;
 
-% Compute accuracy on our training set
-p = predict(theta, X);
+	% Compute accuracy on our training set
+	p = predict(theta, X);
 
-fprintf('Train Accuracy: %f\n', mean(double(p == y)) * 100);
-
+	fprintf('Train Accuracy: %f\n', mean(double(p == y)) * 100);
+end
 
