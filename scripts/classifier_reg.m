@@ -70,10 +70,15 @@ for i = 1:length(lambdas),
 	[theta, J, exit_flag] = ...
 				fminunc(@(t)(costFunctionReg(t, X, y, lambdas(i))), initial_theta, options);
 
+	% Compute accuracy on our training set
+	p = predict(theta, X);
+	accuracy = mean(double(p == y)) * 100;
+	fprintf('Train Accuracy: %f\n', accuracy);
+
 	% Plot Boundary
 	plotDecisionBoundary(theta, X, y);
 	hold on;
-	title(sprintf('lambda = %g', lambdas(i) ))
+	title(sprintf('Accuracy: %f for lambda = %g', accuracy, lambdas(i) ))
 
 	% Labels and Legend
 	xlabel('Microchip Test 1')
@@ -82,9 +87,5 @@ for i = 1:length(lambdas),
 	legend('y = 1', 'y = 0', 'Decision boundary')
 	hold off;
 
-	% Compute accuracy on our training set
-	p = predict(theta, X);
-
-	fprintf('Train Accuracy: %f\n', mean(double(p == y)) * 100);
 end
 
