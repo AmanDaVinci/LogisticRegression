@@ -14,5 +14,6 @@ A regularized Classifier written in MATLAB/Octave
 - ~~Experiment with Regularization parameter~~
 - plotDecisionBoundary - Include decision boundary polynomial support
 - Update Graph output
-- Add results
+- ~~Record results~~
 - Remove Scafolding
+- Generate results Report
