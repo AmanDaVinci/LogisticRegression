@@ -35,4 +35,4 @@ A regularized Classifier written in MATLAB/Octave
 - ~~Record results~~
 - Remove Scafolding
 - ~~Generate results Report~~
-- Make results gif
+- ~~Make results gif~~
