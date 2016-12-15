@@ -11,5 +11,8 @@ A regularized Classifier written in MATLAB/Octave
 - ~~costFunction.m - Logistic Regression Cost Function~~  
 - ~~predict.m - Logistic Regression Prediction Function~~  
 - ~~costFunctionReg.m - Regularized Logistic Regression Cost~~
+- Experiment with Regularization parameter
 - plotDecisionBoundary - Include decision boundary polynomial support
-- logReg - Update Graph output
+- Update Graph output
+- Add results
+- Remove Scafolding
