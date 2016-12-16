@@ -30,7 +30,7 @@ A regularized Classifier written in MATLAB/Octave
 - ~~predict.m - Logistic Regression Prediction Function~~  
 - ~~costFunctionReg.m - Regularized Logistic Regression Cost~~
 - ~~Experiment with Regularization parameter~~
-- plotDecisionBoundary - Include decision boundary polynomial support
+- Improve efficiency by reducing loops (sum)
 - Update Graph output
 - ~~Record results~~
 - Remove Scafolding
